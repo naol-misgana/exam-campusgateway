@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Entrance Biology Exam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      background: linear-gradient(to right, #2c3e50, #4a6491);
+      color: white;
+      padding: 25px 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .content {
+      padding: 30px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .card-title i {
+      background: #4a6491;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1.05rem;
+    }
+    
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus {
+      border-color: #4a6491;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 100, 145, 0.2);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, #4a6491, #2c3e50);
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgba(44, 62, 80, 0.3);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #4a6491;
+      color: #4a6491;
+    }
+    
+    .btn-outline:hover {
+      background: #4a6491;
+      color: white;
+    }
+    
+    .question-counter {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 15px 0;
+      color: #4a6491;
+      font-weight: 600;
+    }
+    
+    .question {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-weight: 600;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #4a6491;
+    }
+    
+    .options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+    
+    .option {
+      padding: 16px;
+      background: #f8f9fa;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .option:hover {
+      background: #edf2f7;
+      border-color: #cbd5e0;
+    }
+    
+    .option.selected {
+      background: #e3f2fd;
+      border-color: #4a6491;
+    }
+    
+    .option-letter {
+      background: #4a6491;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    
+    .btn-nav {
+      width: auto;
+      padding: 12px 25px;
+    }
+    
+    .results {
+      text-align: center;
+    }
+    
+    .score-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: #f8f9fa;
+      margin: 0 auto 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 8px solid #e0e0e0;
+    }
+    
+    .score-value {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      line-height: 1;
+    }
+    
+    .score-text {
+      font-size: 1.2rem;
+      color: #4a6491;
+      font-weight: 600;
+    }
+    
+    .result-message {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+    
+    .review-section {
+      text-align: left;
+    }
+    
+    .review-item {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    
+    .review-question {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    
+    .user-answer {
+      padding: 8px 0;
+      font-weight: 500;
+    }
+    
+    .correct-answer {
+      padding: 8px 0;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    
+    .explanation {
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      border-left: 3px solid #4caf50;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 25px;
+      background: #f0f2f5;
+      color: #5c6b7a;
+      font-size: 0.9rem;
+    }
+    
+    .watermark {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.1;
+      font-size: 5rem;
+      font-weight: bold;
+      color: #2c3e50;
+      pointer-events: none;
+      z-index: 0;
+      transform: rotate(-25deg);
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, #4a6491, #2c3e50);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .question {
+        font-size: 1.1rem;
+      }
+      
+      .score-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .score-value {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .header {
+        padding: 20px 15px;
+      }
+      
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .navigation {
+        flex-direction: column;
+      }
+      
+      .btn-nav {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="watermark">BIOLOGY</div>
+    
+    <div class="header">
+      <h1><i class="fas fa-microscope"></i> Pre-Entrance Biology Exam</h1>
+      <p>Test your knowledge with this comprehensive biology quiz covering Grades 9 & 10 topics</p>
+    </div>
+    
+    <div class="content">
+      <!-- Registration Screen -->
+      <div id="registration-screen">
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-user"></i>
+            <h2>Student Registration</h2>
+          </div>
+          <div class="form-group">
+            <label for="full-name"><i class="fas fa-id-card"></i> Full Name</label>
+            <input type="text" id="full-name" placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label for="school"><i class="fas fa-school"></i> School Name</label>
+            <input type="text" id="school" placeholder="Enter your school name">
+          </div>
+          <div class="form-group">
+            <label for="grade"><i class="fas fa-graduation-cap"></i> Current Grade</label>
+            <input type="text" id="grade" placeholder="Enter your current grade">
+          </div>
+          <button class="btn" id="start-btn">Start Exam <i class="fas fa-arrow-right"></i></button>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-info-circle"></i>
+            <h2>Exam Information</h2>
+          </div>
+          <p><strong>Total Questions:</strong> 60 (30 from Grade 9, 30 from Grade 10)</p>
+          <p><strong>Topics Covered:</strong></p>
+          <ul style="margin: 15px 0 15px 30px;">
+            <li>Biotechnology & Genetics</li>
+            <li>Evolution & Cell Reproduction</li>
+            <li>Human Biology & Health</li>
+            <li>Microorganisms & Classification</li>
+            <li>Ecology & Environment</li>
+          </ul>
+          <p><i class="fas fa-clock"></i> There's no time limit. Take your time to think through each question carefully.</p>
+        </div>
+      </div>
+      
+      <!-- Quiz Screen -->
+      <div id="quiz-screen" class="hidden">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="question-counter">
+          Question <span id="current-question">1</span> of <span id="total-questions">60</span>
+        </div>
+        
+        <div class="card">
+          <div class="question" id="question-text">
+            Which Ethiopian biologist discovered the anti-schistosomiasis property of Endod?
+          </div>
+          
+          <div class="options" id="options-container">
+            <div class="option">
+              <div class="option-letter">A</div>
+              <div class="option-text">Dr Gebissa Ejeta</div>
+            </div>
+            <div class="option">
+              <div class="option-letter">B</div>
+              <div class="option-text">Dr Aklilu Lemma</div>
+            </div>
+            <div class="option">
+              <div class="option-letter">C</div>
+              <div class="option-text">Dr Tilahun Yilma</div>
+            </div>
+            <div class="option">
+              <div class="option-letter">D</div>
+              <div class="option-text">Dr Melaku Worede</div>
+            </div>
+          </div>
+          
+          <div class="navigation">
+            <button class="btn btn-nav btn-outline" id="prev-btn">
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn btn-nav" id="next-btn">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-nav" id="submit-btn" style="display: none;">
+              Submit Exam <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Results Screen -->
+      <div id="results-screen" class="hidden">
+        <div class="card results">
+          <div class="card-title">
+            <i class="fas fa-trophy"></i>
+            <h2>Exam Results</h2>
+          </div>
+          
+          <div class="score-circle">
+            <div class="score-value" id="score-value">85%</div>
+            <div class="score-text">Score</div>
+          </div>
+          
+          <div class="result-message" id="result-message">
+            Excellent Work! You've mastered the material.
+          </div>
+          
+          <p><strong>Name:</strong> <span id="result-name">John Doe</span></p>
+          <p><strong>School:</strong> <span id="result-school">City High School</span></p>
+          <p><strong>Grade:</strong> <span id="result-grade">10</span></p>
+          <p><strong>Correct Answers:</strong> <span id="correct-answers">51</span>/60</p>
+          
+          <button class="btn" id="review-btn">
+            <i class="fas fa-list"></i> Review Answers
+          </button>
+          <button class="btn btn-outline" id="restart-btn" style="margin-top: 15px;">
+            <i class="fas fa-redo"></i> Take Exam Again
+          </button>
+        </div>
+      </div>
+      
+      <!-- Review Screen -->
+      <div id="review-screen" class="hidden">
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-file-alt"></i>
+            <h2>Answer Review</h2>
+          </div>
+          
+          <div class="review-section" id="review-container">
+            <!-- Review content will be generated here -->
+          </div>
+          
+          <button class="btn" id="back-to-results">
+            <i class="fas fa-arrow-left"></i> Back to Results
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>© 2023 Pre-Entrance Biology Exam | Developed for CampusGateway</p>
+      <p>Comprehensive coverage of Grade 9 & 10 Biology curriculum</p>
+    </div>
+  </div>
+
+  <script>
+    // Biology questions - 60 total (30 Grade 9, 30 Grade 10)
+    const questions = [
+      // Grade 9 Questions
+      {
+        question: "Which Ethiopian biologist discovered the anti-schistosomiasis property of Endod?",
+        options: ["Dr Gebissa Ejeta", "Dr Aklilu Lemma", "Dr Tilahun Yilma", "Dr Melaku Worede"],
+        correct: 1,
+        explanation: "Dr. Aklilu Lemma discovered Endod's effectiveness against schistosomiasis."
+      },
+      {
+        question: "The Right Livelihood Award is also known as:",
+        options: ["African Science Prize", "Alternative Nobel Prize", "Global Health Medal", "UNESCO Science Medal"],
+        correct: 1,
+        explanation: "The Right Livelihood Award is often called the 'Alternative Nobel Prize'."
+      },
+      {
+        question: "Which disease was Professor Tilahun Yilma's vaccine developed against?",
+        options: ["Cholera", "Rinderpest", "Malaria", "Anthrax"],
+        correct: 1,
+        explanation: "Professor Tilahun Yilma developed a vaccine against rinderpest."
+      },
+      {
+        question: "What is the function of the Aklilu Lemma Institute of Pathobiology (ALIPB)?",
+        options: ["Agricultural research", "Marine biology research", "Infectious disease research", "Fossil analysis"],
+        correct: 2,
+        explanation: "The Aklilu Lemma Institute of Pathobiology focuses on infectious disease research."
+      },
+      {
+        question: "Who led African negotiations for biosafety and biodiversity in the 2000s?",
+        options: ["Dr Melaku Worede", "Dr Aklilu Lemma", "Dr Tewolde Berhan", "Professor Beyene Petros"],
+        correct: 2,
+        explanation: "Dr Tewolde Berhan led African negotiations for biosafety and biodiversity."
+      },
+      {
+        question: "Which structure allows selective passage of materials into and out of the cell?",
+        options: ["Nucleus", "Ribosome", "Cell membrane", "Cytoplasm"],
+        correct: 2,
+        explanation: "The cell membrane controls what enters and leaves the cell."
+      },
+      {
+        question: "Which organelle is responsible for aerobic respiration?",
+        options: ["Chloroplast", "Mitochondrion", "Golgi apparatus", "Lysosome"],
+        correct: 1,
+        explanation: "Mitochondria are known as the powerhouses of the cell."
+      },
+      {
+        question: "Which microscope provides the highest resolution?",
+        options: ["Light microscope", "Simple microscope", "Compound microscope", "Electron microscope"],
+        correct: 3,
+        explanation: "Electron microscopes can magnify up to 2 million times."
+      },
+      {
+        question: "Which enzyme breaks down protein in the stomach?",
+        options: ["Lipase", "Pepsin", "Amylase", "Trypsin"],
+        correct: 1,
+        explanation: "Pepsin is the primary enzyme that digests proteins in the stomach."
+      },
+      {
+        question: "Which vitamin is synthesized in the skin?",
+        options: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+        correct: 3,
+        explanation: "Vitamin D is synthesized when skin is exposed to sunlight."
+      },
+      {
+        question: "Deficiency of iodine causes:",
+        options: ["Scurvy", "Anemia", "Goiter", "Rickets"],
+        correct: 2,
+        explanation: "Iodine deficiency leads to goiter, an enlargement of the thyroid gland."
+      },
+      {
+        question: "Which scientist disproved spontaneous generation?",
+        options: ["Koch", "Leeuwenhoek", "Pasteur", "Jenner"],
+        correct: 2,
+        explanation: "Louis Pasteur demonstrated that microorganisms come from other microorganisms."
+      },
+      {
+        question: "What is the main structure of a virus?",
+        options: ["Cell wall and DNA", "Protein coat and DNA/RNA", "Nucleus and cytoplasm", "Ribosome and chloroplast"],
+        correct: 1,
+        explanation: "Viruses consist of genetic material (DNA or RNA) surrounded by a protein coat."
+      },
+      {
+        question: "Who developed binomial nomenclature?",
+        options: ["Darwin", "Linnaeus", "Pasteur", "Koch"],
+        correct: 1,
+        explanation: "Carl Linnaeus developed the system for naming species."
+      },
+      {
+        question: "Which group does not have true roots or vascular tissues?",
+        options: ["Angiosperms", "Bryophyta", "Gymnosperms", "Pteridophyta"],
+        correct: 1,
+        explanation: "Bryophytes like mosses lack true roots and vascular tissues."
+      },
+      {
+        question: "Which component is responsible for emulsifying fats?",
+        options: ["Lipase", "Bile", "Amylase", "Water"],
+        correct: 1,
+        explanation: "Bile breaks down fats into smaller droplets for digestion."
+      },
+      {
+        question: "Which organ stores glucose as glycogen?",
+        options: ["Pancreas", "Liver", "Kidney", "Small intestine"],
+        correct: 1,
+        explanation: "The liver converts excess glucose into glycogen for storage."
+      },
+      {
+        question: "Which food test gives a purple color in presence of protein?",
+        options: ["Biuret test", "Benedict's test", "Iodine test", "Sudan III"],
+        correct: 0,
+        explanation: "The Biuret test turns purple when proteins are present."
+      },
+      {
+        question: "Which of the following is an abiotic factor?",
+        options: ["Fungi", "Rainfall", "Predators", "Competition"],
+        correct: 1,
+        explanation: "Rainfall is a non-living component of the environment."
+      },
+      {
+        question: "What is a food web?",
+        options: ["Single feeding path", "Series of producers", "Interlinked food chains", "Chain of carnivores"],
+        correct: 2,
+        explanation: "A food web shows the complex feeding relationships in an ecosystem."
+      },
+      {
+        question: "Which gas is a major contributor to the greenhouse effect?",
+        options: ["Nitrogen", "Carbon dioxide", "Oxygen", "Hydrogen"],
+        correct: 1,
+        explanation: "Carbon dioxide traps heat in the atmosphere."
+      },
+      {
+        question: "What causes the ozone hole?",
+        options: ["Carbon dioxide", "Aerosols", "Volcanoes", "Trees"],
+        correct: 1,
+        explanation: "Chlorofluorocarbons (CFCs) in aerosols damage the ozone layer."
+      },
+      {
+        question: "Which term describes animals eaten by predators?",
+        options: ["Producers", "Prey", "Consumers", "Herbivores"],
+        correct: 1,
+        explanation: "Prey are animals that are hunted and eaten by predators."
+      },
+      {
+        question: "What is the role of plants in the carbon cycle?",
+        options: ["Release methane", "Produce oxygen", "Absorb carbon dioxide", "Emit nitrogen"],
+        correct: 2,
+        explanation: "Plants absorb CO₂ during photosynthesis."
+      },
+      {
+        question: "Which practice can reduce desertification?",
+        options: ["Overgrazing", "Deforestation", "Tree planting", "Urbanization"],
+        correct: 2,
+        explanation: "Planting trees helps prevent soil erosion and desertification."
+      },
+      {
+        question: "What is an adaptation?",
+        options: ["Mutation", "Trait that helps survival", "Disease", "Inheritance"],
+        correct: 1,
+        explanation: "Adaptations are traits that help organisms survive in their environment."
+      },
+      {
+        question: "Which of the following is a biotic factor?",
+        options: ["Wind", "Light", "Temperature", "Disease"],
+        correct: 3,
+        explanation: "Disease is caused by living organisms."
+      },
+      {
+        question: "What is the primary function of the nucleus?",
+        options: ["Protein storage", "Enzyme digestion", "Genetic control", "Osmotic regulation"],
+        correct: 2,
+        explanation: "The nucleus controls cellular activities and contains DNA."
+      },
+      {
+        question: "Why do electron microscopes only view dead tissue?",
+        options: ["They require light", "They heat the sample", "They require a vacuum", "They use water"],
+        correct: 2,
+        explanation: "The vacuum environment required kills living specimens."
+      },
+      {
+        question: "What is the process where substances move against a concentration gradient?",
+        options: ["Diffusion", "Active transport", "Osmosis", "Respiration"],
+        correct: 1,
+        explanation: "Active transport requires energy to move molecules against their gradient."
+      },
+
+      // Grade 10 Questions
+      {
+        question: "What is the process of using microorganisms to convert sugar into alcohol called?",
+        options: ["Photosynthesis", "Anaerobic respiration", "Fermentation", "Transpiration"],
+        correct: 2,
+        explanation: "Fermentation is anaerobic respiration by yeast that converts sugars into ethanol and CO₂."
+      },
+      {
+        question: "Which organism is most commonly used in the production of bread and alcoholic beverages?",
+        options: ["Lactobacillus", "Penicillium", "Saccharomyces cerevisiae", "Escherichia coli"],
+        correct: 2,
+        explanation: "Yeast (Saccharomyces cerevisiae) ferments sugars in bread and alcoholic drink production."
+      },
+      {
+        question: "In bread making, yeast fermentation causes the dough to rise by producing:",
+        options: ["Oxygen", "Lactic acid", "Carbon dioxide", "Alcohol"],
+        correct: 2,
+        explanation: "The CO₂ produced causes dough to expand, forming air bubbles in bread and injera."
+      },
+      {
+        question: "What is the main product of lactic fermentation?",
+        options: ["Ethanol", "Lactic acid", "Oxygen", "Methane"],
+        correct: 1,
+        explanation: "Lactic acid is produced when bacteria ferment lactose, especially in yoghurt and sour milk."
+      },
+      {
+        question: "Which of the following is NOT a traditional application of biotechnology?",
+        options: ["Making tej", "Producing injera", "Gene therapy", "Brewing beer"],
+        correct: 2,
+        explanation: "Gene therapy is a modern, not traditional, application of biotechnology."
+      },
+      {
+        question: "What structure carries genetic information in cells?",
+        options: ["Ribosomes", "Mitochondria", "Chromosomes", "Lysosomes"],
+        correct: 2,
+        explanation: "Chromosomes carry DNA which contains genetic information."
+      },
+      {
+        question: "What are different forms of a gene called?",
+        options: ["Traits", "Alleles", "Chromatids", "Nucleotides"],
+        correct: 1,
+        explanation: "Alleles are different versions of the same gene."
+      },
+      {
+        question: "Which of the following represents a heterozygous genotype?",
+        options: ["TT", "Tt", "tt", "tTt"],
+        correct: 1,
+        explanation: "Tt has two different alleles for a gene, so it is heterozygous."
+      },
+      {
+        question: "Who is known as the father of genetics?",
+        options: ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "Watson"],
+        correct: 1,
+        explanation: "Gregor Mendel discovered the basic principles of heredity using pea plants."
+      },
+      {
+        question: "Which molecule carries genetic code from DNA to ribosomes?",
+        options: ["DNA", "rRNA", "mRNA", "tRNA"],
+        correct: 2,
+        explanation: "mRNA carries genetic instructions from DNA to ribosomes for protein synthesis."
+      },
+      {
+        question: "Which of the following determines a male human?",
+        options: ["XX", "XY", "YY", "X0"],
+        correct: 1,
+        explanation: "XY is the male sex chromosome combination."
+      },
+      {
+        question: "What does a Punnett square show?",
+        options: ["Chromosome structure", "Genetic mutations", "Possible genotypes of offspring", "Protein synthesis"],
+        correct: 2,
+        explanation: "Punnett squares predict the outcome of genetic crosses."
+      },
+      {
+        question: "Who proposed the theory of natural selection?",
+        options: ["Lamarck", "Gregor Mendel", "Charles Darwin", "Watson and Crick"],
+        correct: 2,
+        explanation: "Charles Darwin proposed natural selection as the mechanism of evolution."
+      },
+      {
+        question: "Which concept suggests that organisms with favorable traits are more likely to survive and reproduce?",
+        options: ["Mutation", "Natural selection", "Artificial selection", "Adaptation"],
+        correct: 1,
+        explanation: "Natural selection is the process where better adapted organisms reproduce more."
+      },
+      {
+        question: "What is the term for changes in inherited traits over generations?",
+        options: ["Reproduction", "Mutation", "Evolution", "Speciation"],
+        correct: 2,
+        explanation: "Evolution is the gradual change in inherited traits in populations over time."
+      },
+      {
+        question: "Which process results in two genetically identical daughter cells?",
+        options: ["Meiosis", "Fertilization", "Mitosis", "Mutation"],
+        correct: 2,
+        explanation: "Mitosis produces two identical cells used for growth and repair."
+      },
+      {
+        question: "How many chromosomes are in human somatic cells?",
+        options: ["46", "23", "92", "44"],
+        correct: 0,
+        explanation: "Somatic cells have 46 chromosomes (23 pairs)."
+      },
+      {
+        question: "What is the main function of mitosis?",
+        options: ["Reproduction", "Genetic diversity", "Growth and repair", "Production of gametes"],
+        correct: 2,
+        explanation: "Mitosis is essential for tissue growth and replacing damaged cells."
+      },
+      {
+        question: "Which organ is primarily responsible for filtering blood?",
+        options: ["Liver", "Kidney", "Lung", "Heart"],
+        correct: 1,
+        explanation: "The kidneys filter waste products from the blood and form urine."
+      },
+      {
+        question: "What is the functional unit of the kidney?",
+        options: ["Alveolus", "Nephron", "Neuron", "Villus"],
+        correct: 1,
+        explanation: "Each kidney contains about 1 million nephrons that filter blood."
+      },
+      {
+        question: "Which part of the nephron filters blood plasma?",
+        options: ["Loop of Henle", "Collecting duct", "Glomerulus", "Ureter"],
+        correct: 2,
+        explanation: "The glomerulus is a network of capillaries where filtration begins."
+      },
+      {
+        question: "Which hormone controls water reabsorption in the kidneys?",
+        options: ["Insulin", "Adrenaline", "ADH", "Estrogen"],
+        correct: 2,
+        explanation: "ADH (Antidiuretic hormone) increases water reabsorption in the kidneys."
+      },
+      {
+        question: "What is an ecosystem?",
+        options: ["A group of similar organisms", "All the living and non-living components of an area", "A population of animals", "A climate zone"],
+        correct: 1,
+        explanation: "An ecosystem consists of all the biotic and abiotic components in an environment."
+      },
+      {
+        question: "Which of the following is a biotic factor?",
+        options: ["Temperature", "Soil", "Light", "Predators"],
+        correct: 3,
+        explanation: "Biotic factors are living things like predators, plants, and bacteria."
+      },
+      {
+        question: "What is the main source of energy for most ecosystems?",
+        options: ["Water", "Soil", "Sunlight", "Wind"],
+        correct: 2,
+        explanation: "The sun provides the energy needed by producers in most ecosystems."
+      },
+      {
+        question: "Which organisms are producers?",
+        options: ["Bacteria", "Fungi", "Green plants", "Herbivores"],
+        correct: 2,
+        explanation: "Producers (plants) convert sunlight into energy through photosynthesis."
+      },
+      {
+        question: "What is the role of decomposers?",
+        options: ["Produce energy", "Eat plants", "Break down dead organisms", "Hunt other animals"],
+        correct: 2,
+        explanation: "Decomposers recycle nutrients by breaking down dead matter."
+      },
+      {
+        question: "What does a food chain represent?",
+        options: ["All species in an area", "Movement of organisms", "Flow of energy in an ecosystem", "Only herbivores"],
+        correct: 2,
+        explanation: "A food chain shows how energy is transferred from one organism to another."
+      },
+      {
+        question: "Which level of a food chain receives the least energy?",
+        options: ["Producers", "Primary consumers", "Secondary consumers", "Top carnivores"],
+        correct: 3,
+        explanation: "Energy decreases as it moves up the food chain; top carnivores receive the least."
+      },
+      {
+        question: "Which gas is absorbed by plants during photosynthesis?",
+        options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Methane"],
+        correct: 1,
+        explanation: "Plants take in CO₂ to produce food in photosynthesis."
+      }
+    ];
+
+    // Initialize variables
+    let currentQuestion = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let userData = {};
+    
+    // DOM Elements
+    const registrationScreen = document.getElementById('registration-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultsScreen = document.getElementById('results-screen');
+    const reviewScreen = document.getElementById('review-screen');
+    
+    const startBtn = document.getElementById('start-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const reviewBtn = document.getElementById('review-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const backToResultsBtn = document.getElementById('back-to-results');
+    
+    const progressBar = document.getElementById('progress-bar');
+    const currentQuestionEl = document.getElementById('current-question');
+    const totalQuestionsEl = document.getElementById('total-questions');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    
+    // Initialize the quiz
+    function initQuiz() {
+      totalQuestionsEl.textContent = questions.length;
+      updateProgressBar();
+      loadQuestion();
+    }
+    
+    // Load current question
+    function loadQuestion() {
+      const question = questions[currentQuestion];
+      currentQuestionEl.textContent = currentQuestion + 1;
+      questionText.textContent = question.question;
+      
+      // Clear previous options
+      optionsContainer.innerHTML = '';
+      
+      // Add new options
+      question.options.forEach((option, index) => {
+        const optionElement = document.createElement('div');
+        optionElement.className = 'option';
+        if (userAnswers[currentQuestion] === index) {
+          optionElement.classList.add('selected');
+        }
+        
+        optionElement.innerHTML = `
+          <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+          <div class="option-text">${option}</div>
+        `;
+        
+        optionElement.addEventListener('click', () => selectOption(index));
+        optionsContainer.appendChild(optionElement);
+      });
+      
+      // Update button visibility
+      prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
+      nextBtn.style.display = currentQuestion === questions.length - 1 ? 'none' : 'block';
+      submitBtn.style.display = currentQuestion === questions.length - 1 ? 'block' : 'none';
+    }
+    
+    // Select an option
+    function selectOption(index) {
+      // Remove selected class from all options
+      document.querySelectorAll('.option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      // Add selected class to clicked option
+      document.querySelectorAll('.option')[index].classList.add('selected');
+      
+      // Save answer
+      userAnswers[currentQuestion] = index;
+    }
+    
+    // Navigate to next question
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+        updateProgressBar();
+      }
+    }
+    
+    // Navigate to previous question
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+        updateProgressBar();
+      }
+    }
+    
+    // Update progress bar
+    function updateProgressBar() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+    
+    // Calculate score
+    function calculateScore() {
+      let correct = 0;
+      userAnswers.forEach((answer, index) => {
+        if (answer === questions[index].correct) {
+          correct++;
+        }
+      });
+      return {
+        correct,
+        total: questions.length,
+        percentage: Math.round((correct / questions.length) * 100)
+      };
+    }
+    
+    // Show results
+    function showResults() {
+      const score = calculateScore();
+      
+      document.getElementById('score-value').textContent = `${score.percentage}%`;
+      document.getElementById('correct-answers').textContent = `${score.correct}/${score.total}`;
+      document.getElementById('result-name').textContent = userData.name;
+      document.getElementById('result-school').textContent = userData.school;
+      document.getElementById('result-grade').textContent = userData.grade;
+      
+      // Set result message
+      let message = '';
+      if (score.percentage >= 90) {
+        message = "Outstanding Performance! You've mastered biology concepts exceptionally well.";
+      } else if (score.percentage >= 75) {
+        message = "Excellent Work! You have a strong understanding of biology.";
+      } else if (score.percentage >= 60) {
+        message = "Good Job! You have a solid foundation in biology.";
+      } else if (score.percentage >= 40) {
+        message = "Keep Practicing! Review the material to strengthen your understanding.";
+      } else {
+        message = "Needs Improvement. Focus on key concepts and try again.";
+      }
+      document.getElementById('result-message').textContent = message;
+      
+      quizScreen.classList.add('hidden');
+      resultsScreen.classList.remove('hidden');
+    }
+    
+    // Show answer review
+    function showReview() {
+      const reviewContainer = document.getElementById('review-container');
+      reviewContainer.innerHTML = '';
+      
+      questions.forEach((question, index) => {
+        const userAnswer = userAnswers[index];
+        const isCorrect = userAnswer === question.correct;
+        const answerClass = isCorrect ? 'correct-answer' : 'user-answer';
+        
+        const reviewItem = document.createElement('div');
+        reviewItem.className = 'review-item';
+        reviewItem.innerHTML = `
+          <div class="review-question">${index + 1}. ${question.question}</div>
+          <div class="${answerClass}">Your Answer: ${userAnswer !== null ? question.options[userAnswer] : 'Not answered'}</div>
+          ${!isCorrect ? `<div class="correct-answer">Correct Answer: ${question.options[question.correct]}</div>` : ''}
+          <div class="explanation"><strong>Explanation:</strong> ${question.explanation}</div>
+        `;
+        
+        reviewContainer.appendChild(reviewItem);
+      });
+      
+      resultsScreen.classList.add('hidden');
+      reviewScreen.classList.remove('hidden');
+    }
+    
+    // Event Listeners
+    startBtn.addEventListener('click', () => {
+      const name = document.getElementById('full-name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const school = document.getElementById('school').value.trim();
+      const grade = document.getElementById('grade').value.trim();
+      
+      if (!name || !phone || !school || !grade) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      userData = { name, phone, school, grade };
+      registrationScreen.classList.add('hidden');
+      quizScreen.classList.remove('hidden');
+      initQuiz();
+    });
+    
+    nextBtn.addEventListener('click', nextQuestion);
+    prevBtn.addEventListener('click', prevQuestion);
+    submitBtn.addEventListener('click', showResults);
+    reviewBtn.addEventListener('click', showReview);
+    
+    restartBtn.addEventListener('click', () => {
+      // Reset quiz state
+      currentQuestion = 0;
+      userAnswers = new Array(questions.length).fill(null);
+      
+      // Show registration screen
+      resultsScreen.classList.add('hidden');
+      registrationScreen.classList.remove('hidden');
+      
+      // Clear form
+      document.getElementById('full-name').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('school').value = '';
+      document.getElementById('grade').value = '';
+    });
+    
+    backToResultsBtn.addEventListener('click', () => {
+      reviewScreen.classList.add('hidden');
+      resultsScreen.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
